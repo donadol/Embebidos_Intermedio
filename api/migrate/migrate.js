@@ -2,6 +2,7 @@ var Bookshelf = require('../commons/bookshelf');
 var Schema = require('../schema/schema');
 var sequence = require('when/sequence');
 var _ = require('lodash');
+var knex = require("../config/knexfile");
 
 function createTable(tableName) {
 

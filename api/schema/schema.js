@@ -1,14 +1,16 @@
 var Schema = {
-  signal : {
+  signals : {
     id : {type : 'increments', nullable: false, primary: true},
-    value1 : {type : 'string', maxlength: 20, nullable: false},
+    type : {type : 'string', maxlength: 20, nullable: false},
     value2 : {type : 'string', maxlength: 20, nullable: false},
-	created_at: {type: 'dateTime', nullable: false}
+    //created_at: {type: 'dateTime', nullable: false}
+    created_at: {type : 'string', maxlength: 20, nullable: false}
   },
-  command: {
+  commands : {
     id: {type: 'increments', nullable: false, primary: true},
     text: {type: 'string', maxlength: 250, nullable: false},
-	created_at: {type: 'dateTime', nullable: false}
+	  //created_at: {type: 'dateTime', nullable: false}
+	  created_at : {type : 'string', maxlength: 20, nullable: false}
   }
 };
 
