@@ -2,7 +2,7 @@ var Schema = {
   signals : {
     id : {type : 'increments', nullable: false, primary: true},
     type : {type : 'string', maxlength: 20, nullable: false},
-    value2 : {type : 'string', maxlength: 20, nullable: false},
+    value : {type : 'string', maxlength: 20, nullable: false},
     //created_at: {type: 'dateTime', nullable: false}
     created_at: {type : 'string', maxlength: 20, nullable: false}
   },
@@ -13,5 +13,3 @@ var Schema = {
 	  created_at : {type : 'string', maxlength: 20, nullable: false}
   }
 };
-
-module.exports = Schema;

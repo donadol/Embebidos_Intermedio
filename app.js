@@ -6,6 +6,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 var api = require('./api/routes/api');
+var appRoute=require('./app/routes/routes');
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -18,9 +19,11 @@ app.use(bodyParser.urlencoded({extended : true}));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
-  res.send('Page under construction.');
-});
+// app.get('/', function(req, res) {
+//   //res.send('Page under construction.');
+//   res.sendFile('./public/index.html');
+// });
+app.use('/',appRoute);
 
 app.use('/api', api);
 
@@ -29,8 +32,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-
 
 app.listen(port, function() {
   console.log("✔ Express server listening on port %d in %s mode", port, app.get('env'));

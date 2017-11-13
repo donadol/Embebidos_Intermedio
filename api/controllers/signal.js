@@ -1,14 +1,14 @@
-var Command = require("../models/command");
-var Commands = require("../collections/commands");
+var Signal = require("../models/signal");
+var Signals = require("../collections/signals");
 
-exports.getCommands = function(req, res, next){
-  Commands.forge()
+exports.getSignals = function(req, res, next){
+  Signals.forge()
   .orderBy('created_at','DESC')
   .fetch()
-  .then(function(commandsCollection){
+  .then(function(signalsCollection){
     res.json({
       success : true,
-      data : commandsCollection.toJSON()
+      data : signalsCollection.toJSON()
     });
   })
   .catch(function(err){
@@ -19,16 +19,16 @@ exports.getCommands = function(req, res, next){
   });
 };
 
-// GET - Get most recent command
-exports.getMostRecentCommand = function (req, res, next)
+// GET - Get most recent signal
+exports.getMostRecentSignal = function (req, res, next)
 {
-  Command.forge()
+  Signal.forge()
   .orderBy('created_at','DESC')
   .fetchOne()
-  .then(function(commandsCollection){
+  .then(function(signalsCollection){
     res.json({
       success : true,
-      data : commandsCollection.toJSON()
+      data : signalsCollection.toJSON()
     });
   })
   .catch(function(err){
@@ -39,13 +39,15 @@ exports.getMostRecentCommand = function (req, res, next)
   });
 };
 
-exports.saveCommand = function (req, res, next){
-  Command.forge({
-    text: req.body.text,
+exports.saveSignal = function (req, res, next){
+  console.log('req.value = '+req.body.value);
+  Signal.forge({
+    value: req.body.value,
+    type: req.body.type,
     created_at: req.body.created_at
   })
   .save()
-  .then(function(newCommand){
+  .then(function(newSignal){
     res.json({
       success : true
     });

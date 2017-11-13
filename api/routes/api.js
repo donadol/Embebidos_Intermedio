@@ -1,6 +1,7 @@
 const express = require("express");
 
 var CommandController = require('../controllers/command');
+var SignalController = require('../controllers/signal');
 
 var apiRoutes = express.Router(),
     commandRoutes = express.Router(),
@@ -8,12 +9,9 @@ var apiRoutes = express.Router(),
     
 apiRoutes.use("/signal", signalRoutes);
 
-signalRoutes.get ("/", function(req, res) {
-  console.log("signal");
-  res.send('Page under construction.');
-});
+signalRoutes.get ("/", SignalController.getSignals);
+signalRoutes.post("/", SignalController.saveSignal);
 
-//
 apiRoutes.use("/command", commandRoutes);
 
 commandRoutes.get ("/", CommandController.getCommands);
