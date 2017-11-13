@@ -38,7 +38,7 @@ signalRoutes.get("/mostRecent", function(req, res){
   .orderBy('created_at','DESC')
   .fetchOne()
   .then(function(signalsCollection){
-    res.send("Señal más reciente: "+signalsCollection[0]);
+    res.send(signalsCollection);
   })
   .catch(function(err){
     res.status(500).json({
@@ -62,6 +62,10 @@ commandRoutes.get("/", function(req, res){
   .fetch()
   .then(function(commandsCollection){
     res.send(commandsCollection);
+    
+   // _.each(commandsCollection.models, function (model) { //I am looping over models using underscore, you can use any loop
+      //console.log(model.attributes)
+    //})
   })
   .catch(function(err){
     res.status(500).json({
@@ -76,7 +80,7 @@ commandRoutes.get("/mostRecent", function(req, res){
   .orderBy('created_at','DESC')
   .fetchOne()
   .then(function(commandsCollection){
-    res.send("Comando más reciente: "+commandsCollection[0]);
+    res.send(commandsCollection);
   })
   .catch(function(err){
     res.status(500).json({
