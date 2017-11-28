@@ -1,3 +1,4 @@
 # Embebidos Proyecto Intermedio
-proyecto de monitoreo bovino
+Proyecto de monitoreo bovino, utilizando firebase y ubidots.
+
 http://embebidosfinal.cf
